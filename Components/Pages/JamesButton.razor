@@ -1,1 +1,27 @@
 
+<button class="btn btn-outline-secondary btn-lg w-100 h-100" @onclick="PlayMove">
+    @p
+</button>
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = "1"; // Default to Id 1
+
+    private string p = string.Empty;
+    public void PlayMove()
+    {
+        switch (p)
+        {
+            case "":
+                p = "X";
+                break;
+            case "X":
+                p = "O";
+                break;
+            case "O":
+                p = String.Empty;
+                break;
+
+        }
+    }
+}
