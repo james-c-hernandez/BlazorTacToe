@@ -1,25 +1,25 @@
 
-<button class="btn btn-outline-secondary btn-lg w-100 h-100" @onclick="PlayMove">
-    @p
+<button class="btn btn-outline-secondary btn-lg w-100 h-100" @onclick="HandleClick">
+    @val
 </button>
 
 @code {
     [Parameter]
     public string Id { get; set; } = "1"; // Default to Id 1
 
-    private string p = string.Empty;
-    public void PlayMove()
+    private string val = string.Empty;
+    public void HandleClick()
     {
-        switch (p)
+        switch (val)
         {
             case "":
-                p = "X";
+                val = "X";
                 break;
             case "X":
-                p = "O";
+                val = "O";
                 break;
             case "O":
-                p = String.Empty;
+                val = String.Empty;
                 break;
 
         }

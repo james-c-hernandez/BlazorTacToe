@@ -40,23 +40,3 @@
     </div>
 
 </div>
-
-@code {
-    private string p = string.Empty;
-    public void PlayMove()
-    {
-        switch (p)
-        {
-            case "":
-                p = "X";
-                break;
-            case "X":
-                p = "O";
-                break;
-            case "O":
-                p = String.Empty;
-                break;
-
-        }
-    }
-}
