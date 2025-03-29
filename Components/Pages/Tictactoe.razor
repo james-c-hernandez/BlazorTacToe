@@ -5,38 +5,47 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <JamesButton Id="1"/>
+            <JamesButton Id="0" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="2"/>
+            <JamesButton Id="1" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="3" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-4">
-            <JamesButton Id="4" />
-        </div>
-        <div class="col-4">
-            <JamesButton Id="5" />
-        </div>
-        <div class="col-4">
-            <JamesButton Id="6" />
+            <JamesButton Id="2" GameRef="CurrentGame" />
         </div>
     </div>
 
     <div class="row">
         <div class="col-4">
-            <JamesButton Id="7" />
+            <JamesButton Id="3" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="8" />
+            <JamesButton Id="4" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="9" />
+            <JamesButton Id="5" GameRef="CurrentGame" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <JamesButton Id="6" GameRef="CurrentGame" />
+        </div>
+        <div class="col-4">
+            <JamesButton Id="7" GameRef="CurrentGame" />
+        </div>
+        <div class="col-4">
+            <JamesButton Id="8" GameRef="CurrentGame" />
         </div>
     </div>
 
 </div>
+
+@code {
+    public class Game
+    {
+        // Option 1: Array initializer
+        public string[] Gameboard { get; set; } = new string[9] { "", "X", "", "", "", "", "", "", "" };
+    }
+    private Game CurrentGame = new Game();
+}

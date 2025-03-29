@@ -1,27 +1,31 @@
 
 <button class="btn btn-outline-secondary btn-lg w-100 h-100" @onclick="HandleClick">
+    @GameRef.Gameboard[Id]
     @val
 </button>
 
 @code {
     [Parameter]
-    public string Id { get; set; } = "1"; // Default to Id 1
+    public int Id { get; set; } = 1; //"1"; // Default to Id 1
+
+    [Parameter]
+    public Tictactoe.Game GameRef { get; set; } = null!; //rference to Game object containing gameboard state
 
     private string val = string.Empty;
     public void HandleClick()
     {
-        switch (val)
+        switch (GameRef.Gameboard[Id])
         {
             case "":
-                val = "X";
+                GameRef.Gameboard[Id] = "X";
                 break;
             case "X":
-                val = "O";
+                GameRef.Gameboard[Id] = "O";
                 break;
             case "O":
-                val = String.Empty;
+                GameRef.Gameboard[Id] = String.Empty;
                 break;
-
         }
+        
     }
 }
