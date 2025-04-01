@@ -6,37 +6,37 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <JamesButton Id="0" GameRef="CurrentGame" />
+            <TicTacToeButton Id="0" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="1" GameRef="CurrentGame" />
+            <TicTacToeButton Id="1" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="2" GameRef="CurrentGame" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-4">
-            <JamesButton Id="3" GameRef="CurrentGame" />
-        </div>
-        <div class="col-4">
-            <JamesButton Id="4" GameRef="CurrentGame" />
-        </div>
-        <div class="col-4">
-            <JamesButton Id="5" GameRef="CurrentGame" />
+            <TicTacToeButton Id="2" GameRef="CurrentGame" />
         </div>
     </div>
 
     <div class="row">
         <div class="col-4">
-            <JamesButton Id="6" GameRef="CurrentGame" />
+            <TicTacToeButton Id="3" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="7" GameRef="CurrentGame" />
+            <TicTacToeButton Id="4" GameRef="CurrentGame" />
         </div>
         <div class="col-4">
-            <JamesButton Id="8" GameRef="CurrentGame" />
+            <TicTacToeButton Id="5" GameRef="CurrentGame" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <TicTacToeButton Id="6" GameRef="CurrentGame" />
+        </div>
+        <div class="col-4">
+            <TicTacToeButton Id="7" GameRef="CurrentGame" />
+        </div>
+        <div class="col-4">
+            <TicTacToeButton Id="8" GameRef="CurrentGame" />
         </div>
     </div>
     <p></p>
@@ -73,30 +73,38 @@
         {
             bool bIsWinner = false;
             //rows
-            if (Gameboard[0] == Player && Gameboard[1] == Player && Gameboard[2] == Player) {
+            if (Gameboard[0] == Player && Gameboard[1] == Player && Gameboard[2] == Player)
+            {
                 bIsWinner = true;
             }
-            if (Gameboard[3] == Player && Gameboard[4] == Player && Gameboard[5] == Player) {
+            if (Gameboard[3] == Player && Gameboard[4] == Player && Gameboard[5] == Player)
+            {
                 bIsWinner = true;
             }
-            if (Gameboard[6] == Player && Gameboard[7] == Player && Gameboard[8] == Player) {
+            if (Gameboard[6] == Player && Gameboard[7] == Player && Gameboard[8] == Player)
+            {
                 bIsWinner = true;
             }
             //columns
-            if (Gameboard[0] == Player && Gameboard[3] == Player && Gameboard[6] == Player) {
+            if (Gameboard[0] == Player && Gameboard[3] == Player && Gameboard[6] == Player)
+            {
                 bIsWinner = true;
             }
-            if (Gameboard[1] == Player && Gameboard[4] == Player && Gameboard[7] == Player) {
+            if (Gameboard[1] == Player && Gameboard[4] == Player && Gameboard[7] == Player)
+            {
                 bIsWinner = true;
             }
-            if (Gameboard[2] == Player && Gameboard[5] == Player && Gameboard[8] == Player) {
+            if (Gameboard[2] == Player && Gameboard[5] == Player && Gameboard[8] == Player)
+            {
                 bIsWinner = true;
             }
             //diagonals
-            if (Gameboard[0] == Player && Gameboard[4] == Player && Gameboard[8] == Player) {
+            if (Gameboard[0] == Player && Gameboard[4] == Player && Gameboard[8] == Player)
+            {
                 bIsWinner = true;
             }
-            if (Gameboard[6] == Player && Gameboard[4] == Player && Gameboard[2] == Player) {
+            if (Gameboard[6] == Player && Gameboard[4] == Player && Gameboard[2] == Player)
+            {
                 bIsWinner = true;
             }
             return bIsWinner;
