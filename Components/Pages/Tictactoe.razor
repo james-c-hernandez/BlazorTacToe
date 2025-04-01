@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using System.ComponentModel
 @rendermode InteractiveServer
 <h1>Tic-Tac-Toe</h1>
 
@@ -38,14 +39,78 @@
             <JamesButton Id="8" GameRef="CurrentGame" />
         </div>
     </div>
+    <p></p>
+    <p role="status">@CurrentGame.GetGameStatus()</p>
 
 </div>
 
 @code {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
         // Option 1: Array initializer
-        public string[] Gameboard { get; set; } = new string[9] { "", "X", "", "", "", "", "", "", "" };
+        public string[] Gameboard { get; set; } = new string[9] { "", "", "", "", "", "", "", "", "" };
+        private string GameStatus = "in-progress";
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void CheckForWin()
+        {
+            // checks for win
+            if (CheckForWinner("O"))
+            {
+                this.GameStatus = "O wins! Game over!";
+            }
+            if (CheckForWinner("X"))
+            {
+                this.GameStatus = "X wins! Game over!";
+            }
+
+            // Notify after checking for win
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Gameboard"));
+        }
+
+        public bool CheckForWinner(string Player)
+        {
+            bool bIsWinner = false;
+            //rows
+            if (Gameboard[0] == Player && Gameboard[1] == Player && Gameboard[2] == Player) {
+                bIsWinner = true;
+            }
+            if (Gameboard[3] == Player && Gameboard[4] == Player && Gameboard[5] == Player) {
+                bIsWinner = true;
+            }
+            if (Gameboard[6] == Player && Gameboard[7] == Player && Gameboard[8] == Player) {
+                bIsWinner = true;
+            }
+            //columns
+            if (Gameboard[0] == Player && Gameboard[3] == Player && Gameboard[6] == Player) {
+                bIsWinner = true;
+            }
+            if (Gameboard[1] == Player && Gameboard[4] == Player && Gameboard[7] == Player) {
+                bIsWinner = true;
+            }
+            if (Gameboard[2] == Player && Gameboard[5] == Player && Gameboard[8] == Player) {
+                bIsWinner = true;
+            }
+            //diagonals
+            if (Gameboard[0] == Player && Gameboard[4] == Player && Gameboard[8] == Player) {
+                bIsWinner = true;
+            }
+            if (Gameboard[6] == Player && Gameboard[4] == Player && Gameboard[2] == Player) {
+                bIsWinner = true;
+            }
+            return bIsWinner;
+        }
+
+        public string GetGameStatus()
+        {
+            return this.GameStatus;
+        }
     }
+
     private Game CurrentGame = new Game();
+    protected override void OnInitialized()
+    {
+        CurrentGame.PropertyChanged += (s, e) => StateHasChanged();
+    }
 }

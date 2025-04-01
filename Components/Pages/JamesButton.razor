@@ -1,3 +1,4 @@
+@using System.ComponentModel
 
 <button class="btn btn-outline-secondary btn-lg w-100 h-100" @onclick="HandleClick">
     @GameRef.Gameboard[Id]
@@ -14,6 +15,8 @@
     private string val = string.Empty;
     public void HandleClick()
     {
+        if (GameRef.GetGameStatus() != "in-progress")
+            return; // return if game is over 
         switch (GameRef.Gameboard[Id])
         {
             case "":
@@ -26,6 +29,8 @@
                 GameRef.Gameboard[Id] = String.Empty;
                 break;
         }
-        
+
+        GameRef.CheckForWin(); // do this after each click
     }
+
 }
